@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.List;
 
-import vn.edu.vnu.uet.ml.measurement.F1Score;
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
+import vn.edu.vnu.uet.nlp.segmenter.measurement.F1Score;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
 
 public class TenTests {

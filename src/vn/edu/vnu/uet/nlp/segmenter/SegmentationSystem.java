@@ -10,14 +10,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.SortedSet;
 
-import vn.edu.vnu.uet.ml.liblinear.Feature;
-import vn.edu.vnu.uet.ml.liblinear.FeatureNode;
-import vn.edu.vnu.uet.ml.liblinear.Linear;
-import vn.edu.vnu.uet.ml.liblinear.Model;
-import vn.edu.vnu.uet.ml.liblinear.Parameter;
-import vn.edu.vnu.uet.ml.liblinear.Problem;
-import vn.edu.vnu.uet.ml.liblinear.SolverType;
-import vn.edu.vnu.uet.ml.measurement.F1Score;
+import vn.edu.vnu.uet.liblinear.Feature;
+import vn.edu.vnu.uet.liblinear.FeatureNode;
+import vn.edu.vnu.uet.liblinear.Linear;
+import vn.edu.vnu.uet.liblinear.Model;
+import vn.edu.vnu.uet.liblinear.Parameter;
+import vn.edu.vnu.uet.liblinear.Problem;
+import vn.edu.vnu.uet.liblinear.SolverType;
+import vn.edu.vnu.uet.nlp.segmenter.measurement.F1Score;
 import vn.edu.vnu.uet.nlp.tokenizer.StringConst;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
 import vn.edu.vnu.uet.nlp.utils.Logging;
@@ -58,7 +58,7 @@ public class SegmentationSystem {
 	}
 
 	// Constructor for TESTING and SEGMENTING
-	public SegmentationSystem(String folderpath) throws ClassNotFoundException {
+	public SegmentationSystem(String folderpath) throws ClassNotFoundException, IOException {
 		problem = new Problem();
 		parameter = new Parameter(SolverType.L2R_LR, 1.0, 0.01);
 		load(folderpath);
@@ -138,6 +138,12 @@ public class SegmentationSystem {
 		N3 = 0; // number of right segmented words.
 
 		// create log file
+		try {
+			File fol = new File("log");
+			fol.mkdir();
+		} catch (Exception e) {
+			// do nothing
+		}
 		String logName = "log/log_test_" + new Date() + ".txt";
 		BufferedWriter bw = FileUtils.newUTF8BufferedWriterFromNewFile(logName);
 		// finish creating log file
@@ -609,20 +615,19 @@ public class SegmentationSystem {
 
 	}
 
-	private void load(String path) throws ClassNotFoundException {
+	private void load(String path) throws ClassNotFoundException, IOException {
+		if (path.endsWith("/")) {
+			path = path.substring(0, path.length() - 1);
+		}
 		String modelPath = path + File.separator + "model";
 		String featMapPath = path + File.separator + "features";
 
 		File modelFile = new File(modelPath);
 
-		try {
-			model = Model.load(modelFile);
-			fe = new FeatureExtractor(featMapPath);
-			pathToSave = path;
-			n = fe.getFeatureMap().getSize();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		model = Model.load(modelFile);
+		fe = new FeatureExtractor(featMapPath);
+		pathToSave = path;
+		n = fe.getFeatureMap().getSize();
 	}
 
 	public FeatureExtractor getFeatureExactor() {
