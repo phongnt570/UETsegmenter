@@ -21,7 +21,7 @@ public class Test {
 		SegmentationSystem machine = null;
 
 		try {
-			System.out.println("Loading models...\n");
+			System.out.println("Load model...\n");
 			machine = new SegmentationSystem(modelsPath);
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();

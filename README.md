@@ -64,6 +64,7 @@ Additional arguments for each method:
 + Segment a raw text:
 
 ```java
+	String modelsPath = "models"; // path to the model folder. This folder must contain two files: model, features
 	UETSegmenter segmenter = new UETSegmenter(modelsPath); // construct the segmenter
 	String raw_text_1 = "Tốc độ truyền thông tin ngày càng cao.";
 	String raw_text_2 = "Tôi yêu Việt Nam!";

@@ -23,10 +23,11 @@ public class Segment {
 	 */
 	private static void segmentFile(String input, String output) {
 		if (segmenter == null) {
+			System.out.println("Load model...");
 			segmenter = new UETSegmenter(modelsPath);
 		}
 
-		System.out.println("Segment file:\t" + input + "\n");
+		System.out.println("Segment file:\t" + input);
 		List<String> dataLines = null;
 		BufferedWriter bw = null;
 		try {
