@@ -8,7 +8,7 @@ UETsegmenter is written in Java and developed in Esclipse IDE.
 
 + ```src``` : folder of java source code
 
-+ ```uetsegmenter.jar``` : executable jar file (see [How to run](#how-to-run))
++ ```uetsegmenter.jar``` : an executable jar file (see [How to run](#how-to-run))
 
 + ```models``` : a pre-trained model for Vietnamese word segmentation
 
