@@ -4,12 +4,22 @@ UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid app
 
 UETsegmenter is written in Java and developed in Esclipse IDE.
 
+## Overview
+
++ ```src```: folder of java source code
+
++ ```uetsegmenter.jar```: executable jar file
+
++ ```models```: a pre-trained model for Vietnamese word segmentation
+
++ ```dictionary```: necessary dictionary for word segmentation
+
 ## How to run
 
 The following command is used to run this toolkit, your PC needs JDK 1.8 or newer:
 
 ```
-vn.edu.vnu.uet.nlp.segmenter.bin.Execute -r <what_to_execute> {additional arguments}
+java -jar uetsegmenter.jar -r <what_to_execute> {additional arguments}
 
 	-r	:	the method you want to execute (required: seg|train|test)
 ```
@@ -21,7 +31,7 @@ Additional arguments for each method:
 ```
 -m <models_path> -i <input_path> [-ie <input_extension>] -o <output_path> [-oe <output_extension>]
 
-	-m	:	path to the folder of segmenter models (required)
+	-m	:	path to the folder of segmenter model (required)
 	-i	:	path to the input text (file/folder) (required)
 	-ie	:	input extension, only use when input_path is a folder (default: *)
 	-o	:	path to the output text (file/folder) (required)
@@ -35,7 +45,7 @@ Additional arguments for each method:
 
 	-i	:	path to the training data (file/folder) (required)
 	-e	:	file extension, only use when training_data is a folder (default: *)
-	-m	:	path to the folder you want to save models after training (required)
+	-m	:	path to the folder you want to save model after training (required)
 ```
 
 + ```-r test``` : Method for testing a model. Needed arguments:
@@ -43,7 +53,7 @@ Additional arguments for each method:
 ```
 -m <models_path> -t <test_file>
 
-	-m	:	path to the folder of segmenter models (required)
+	-m	:	path to the folder of segmenter model (required)
 	-t	:	path to the test file (required)
 ```
 
@@ -85,6 +95,8 @@ Additional arguments for each method:
 																	// [1] : Tôi , bạn tôi yêu Việt_Nam !
 ```
 
-# Author
+## Author
 
-Phong Tuan Nguyen, University of Engineering and Technology, Vietnam National University - Hanoi; email: phongnt.uet at gmail dot com.
+Phong Tuan Nguyen
+University of Engineering and Technology, Vietnam National University - Hanoi
+Email: phongnt.uet at gmail dot com.
