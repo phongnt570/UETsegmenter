@@ -6,13 +6,13 @@ UETsegmenter is written in Java and developed in Esclipse IDE.
 
 ## Overview
 
-+ ```src```: folder of java source code
++ ```src``` : folder of java source code
 
-+ ```uetsegmenter.jar```: executable jar file (see [How to run](#how-to-run))
++ ```uetsegmenter.jar``` : executable jar file (see [How to run](#how-to-run))
 
-+ ```models```: a pre-trained model for Vietnamese word segmentation
++ ```models``` : a pre-trained model for Vietnamese word segmentation
 
-+ ```dictionary```: necessary dictionaries for word segmentation
++ ```dictionary``` : necessary dictionaries for word segmentation
 
 ## How to run
 
@@ -85,7 +85,7 @@ Additional arguments for each method:
 	String segmented = segmenter.segmentTokenizedText(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
 ```
 
-+ Segment a raw text and return list of sentences:
++ Segment a raw text and return list of segmented sentences:
 
 ```java
 	// ...
