@@ -12,7 +12,7 @@ UETsegmenter is written in Java and developed in Esclipse IDE.
 
 + ```models```: a pre-trained model for Vietnamese word segmentation
 
-+ ```dictionary```: necessary dictionary for word segmentation
++ ```dictionary```: necessary dictionaries for word segmentation
 
 ## How to run
 
