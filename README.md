@@ -2,9 +2,11 @@
 
 UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid approach that combines longest matching with logistic regression.
 
+UETsegmenter is written in Java and developed in Esclipse IDE.
+
 ## How to run
 
-The following command is used to run this toolkit:
+The following command is used to run this toolkit, your PC needs JDK 1.8 or newer:
 
 ```
 vn.edu.vnu.uet.nlp.segmenter.bin.Execute -r <what_to_execute> {additional arguments}
@@ -12,7 +14,7 @@ vn.edu.vnu.uet.nlp.segmenter.bin.Execute -r <what_to_execute> {additional argume
 	-r	:	the method you want to execute (required: seg|train|test)
 ```
 
-* Additional arguments for each method:
+Additional arguments for each method:
 
 + ```-r seg``` : Method for word segmentation. Needed arguments:
 
@@ -44,3 +46,45 @@ vn.edu.vnu.uet.nlp.segmenter.bin.Execute -r <what_to_execute> {additional argume
 	-m	:	path to the folder of segmenter models (required)
 	-t	:	path to the test file (required)
 ```
+
+## APIs
+
+3 APIs for Vietnames word segmentation are provided:
+
++ Segment a raw text:
+
+```java
+	UETSegmenter segmenter = new UETSegmenter(modelsPath); // construct the segmenter
+	String raw_text_1 = "Tốc độ truyền thông tin ngày càng cao.";
+	String raw_text_2 = "Tôi yêu Việt Nam!";
+
+	String seg_text_1 = segmenter.segment(raw_text_1); // Tốc_độ truyền thông_tin ngày_càng cao .
+	String seg_text_2 = segmenter.segment(raw_text_2); // Tôi yêu Việt_Nam !
+
+	// ... You only need to construct the segmenter one time, then you can segment any number of texts.
+```
+
++ Segment a tokenized text:
+
+```java
+	// ...
+	// ... construct the segmenter
+
+	String tokenized = "Tôi , bạn tôi yêu Việt Nam !";
+	String segmented = segmenter.segment(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
+```
+
++ Segment a raw text and return list of sentences:
+
+```java
+	// ...
+	// ... construct the segmenter
+
+	String text = "Tốc độ truyền thông tin ngày càng cao. Tôi, bạn tôi yêu Việt Nam!";
+	List<String> segmented_sents = segmenter.segmentSentences(text); // [0] : Tốc_độ truyền thông_tin ngày_càng cao .
+																	// [1] : Tôi , bạn tôi yêu Việt_Nam !
+```
+
+# Author
+
+Phong Tuan Nguyen, University of Engineering and Technology, Vietnam National University - Hanoi; email: phongnt.uet at gmail dot com.
