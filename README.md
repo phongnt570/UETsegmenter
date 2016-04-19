@@ -101,4 +101,4 @@ Phong Tuan Nguyen
 
 University of Engineering and Technology, Vietnam National University - Hanoi
 
-Email: phongnt.uet@ gmail@com
+Email: phongnt.uet@gmail.com
