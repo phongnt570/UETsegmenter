@@ -48,6 +48,8 @@ Additional arguments for each method:
 	-m	:	path to the folder you want to save model after training (required)
 ```
 
+After training, the ```models_path``` folder will contain 2 files: ```model``` and ```features```.
+
 + ```-r test``` : Method for testing a model. Needed arguments:
 
 ```
