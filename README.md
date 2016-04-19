@@ -81,7 +81,7 @@ Additional arguments for each method:
 	// ... construct the segmenter
 
 	String tokenized = "Tôi , bạn tôi yêu Việt Nam !";
-	String segmented = segmenter.segment(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
+	String segmented = segmenter.segmentTokenizedText(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
 ```
 
 + Segment a raw text and return list of sentences:
