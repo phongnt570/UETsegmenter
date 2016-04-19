@@ -17,7 +17,7 @@ public class UETSegmenter {
 	private SegmentationSystem machine = null;
 
 	public UETSegmenter() {
-		new UETSegmenter("models");
+		this("models");
 	}
 
 	public UETSegmenter(String modelpath) {
