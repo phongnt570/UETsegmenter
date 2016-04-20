@@ -638,7 +638,10 @@ public class SegmentationSystem {
 		return 1 / (1 + Math.exp(-d));
 	}
 
-	public static void setR(double r) {
+	public void setR(double r) {
+		if (r < 0 || r > 0.5) {
+			return;
+		}
 		SegmentationSystem.r = r;
 	}
 }

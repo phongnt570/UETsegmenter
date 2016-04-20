@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
 import vn.edu.vnu.uet.nlp.segmenter.UETSegmenter;
 
 public class NewEvaluation {
@@ -25,7 +24,6 @@ public class NewEvaluation {
 	private static UETSegmenter segmenter;
 
 	public static void main(String args[]) {
-		SegmentationSystem.setR(0.33);
 		long initTime = init();
 		System.out.println("Initialize time: " + initTime);
 

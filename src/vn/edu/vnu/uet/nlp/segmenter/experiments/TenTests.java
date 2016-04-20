@@ -17,7 +17,6 @@ public class TenTests {
 			BufferedWriter bw = FileUtils.newUTF8BufferedWriterFromNewFile("parameter.txt");
 			double R = 0.00;
 			for (int k = 0; k < 51; k++) {
-				SegmentationSystem.setR(R);
 				F1Score[] FScores = new F1Score[10];
 
 				for (int i = 0; i < 10; i++) {
@@ -27,6 +26,7 @@ public class TenTests {
 					SegmentationSystem machine = null;
 					try {
 						machine = new SegmentationSystem("testmodels/models_" + i);
+						machine.setR(R);
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
