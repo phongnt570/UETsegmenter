@@ -1,6 +1,6 @@
 # UETsegmenter
 
-UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid approach that combines longest matching with logistic regression.
+UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid approach that is based on longest matching with logistic regression.
 
 UETsegmenter is written in Java and developed in Esclipse IDE.
 
@@ -8,13 +8,13 @@ UETsegmenter is written in Java and developed in Esclipse IDE.
 
 + ```src``` : folder of java source code
 
-+ ```uetsegmenter.jar``` : an executable jar file (see [How to run](#how-to-run))
++ ```uetsegmenter.jar``` : an executable jar file (see [How to use](#how-to-use))
 
 + ```models``` : a pre-trained model for Vietnamese word segmentation
 
 + ```dictionary``` : necessary dictionaries for word segmentation
 
-## How to run
+## How to use
 
 The following command is used to run this toolkit, your PC needs JDK 1.8 or newer:
 
