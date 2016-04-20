@@ -92,7 +92,7 @@ public class Train {
 		for (File file : files) {
 			String filePath = file.getPath();
 			if (file.isFile()) {
-				if (ext.equals("*") || filePath.endsWith("." + ext)) {
+				if (ext.equals("*") || filePath.endsWith(ext)) {
 					System.out.println("File:\t" + filePath + "\n");
 					List<String> dataLines = null;
 					try {
