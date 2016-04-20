@@ -2,6 +2,7 @@ package vn.edu.vnu.uet.nlp.segmenter;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import vn.edu.vnu.uet.nlp.tokenizer.StringConst;
@@ -36,7 +37,23 @@ public class UETSegmenter {
 	 * @return Segmented text
 	 */
 	public String segmentTokenizedText(String str) {
-		return machine.segment(str);
+		StringBuffer sb = new StringBuffer();
+
+		List<String> tokens = new ArrayList<String>();
+		List<String> sentences = new ArrayList<String>();
+
+		tokens.addAll(Arrays.asList(str.split("\\s+")));
+		sentences = Tokenizer.joinSentences(tokens);
+
+		for (String sentence : sentences) {
+			sb.append((machine.segment(sentence)));
+			sb.append(StringConst.SPACE);
+		}
+
+		tokens.clear();
+		sentences.clear();
+
+		return sb.toString().trim();
 	}
 
 	/**
