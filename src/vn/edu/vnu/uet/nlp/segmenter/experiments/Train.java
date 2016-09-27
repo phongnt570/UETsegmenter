@@ -12,7 +12,7 @@ import java.text.Normalizer.Form;
 import vn.edu.vnu.uet.nlp.segmenter.Configure;
 import vn.edu.vnu.uet.nlp.segmenter.FeatureExtractor;
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * Used for training an individual segmentation system for a fold
@@ -29,7 +29,7 @@ public class Train {
 
 		FeatureExtractor fe = new FeatureExtractor();
 
-		Logging.info("extracting features...");
+		OldLogging.info("extracting features...");
 		String line = null;
 		int cnt = 0;
 		while ((line = br.readLine()) != null) {

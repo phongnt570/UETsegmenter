@@ -8,7 +8,7 @@ import java.util.List;
 
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * Used for testing the model trained on full corpus of VTB
@@ -19,7 +19,7 @@ import vn.edu.vnu.uet.nlp.utils.Logging;
 public class FullModelTest {
 
 	public static void main(String[] args) throws IOException {
-		Logging.info("loading model...");
+		OldLogging.info("loading model...");
 		SegmentationSystem machine = null;
 		try {
 			machine = new SegmentationSystem("original_models");
@@ -27,7 +27,7 @@ public class FullModelTest {
 			e.printStackTrace();
 		}
 
-		Logging.info("testing...");
+		OldLogging.info("testing...");
 		List<String> dataLines = FileUtils.readFile("raw/independent-test-100sentences.seg");
 		List<String> lines = new ArrayList<String>();
 

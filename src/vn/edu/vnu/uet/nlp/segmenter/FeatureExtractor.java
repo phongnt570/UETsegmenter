@@ -11,7 +11,7 @@ import java.util.TreeSet;
 
 import vn.edu.vnu.uet.nlp.tokenizer.Regex;
 import vn.edu.vnu.uet.nlp.tokenizer.StringConst;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * The class for extracting features using in logistic regression.
@@ -63,7 +63,7 @@ public class FeatureExtractor {
 		for (int i = 0; i < sentences.size(); i++) {
 			extract(sentences.get(i), mode);
 			if (i % 1000 == 999 || i == sentences.size() - 1) {
-				Logging.info((i + 1) + " sentences extracted to features");
+				OldLogging.info((i + 1) + " sentences extracted to features");
 			}
 
 		}

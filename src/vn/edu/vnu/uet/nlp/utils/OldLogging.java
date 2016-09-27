@@ -6,7 +6,7 @@ import java.util.Date;
  * @author tuanphong94
  *
  */
-public class Logging {
+public class OldLogging {
 
 	private static void log(String mes, String type) {
 		String lines[] = mes.split("\\r?\\n");

@@ -20,7 +20,7 @@ import vn.edu.vnu.uet.liblinear.SolverType;
 import vn.edu.vnu.uet.nlp.segmenter.measurement.F1Score;
 import vn.edu.vnu.uet.nlp.tokenizer.StringConst;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * The segmentation system contains three components: Longest matching, Logistic
@@ -106,23 +106,23 @@ public class SegmentationSystem {
 	 * Training the logistic regression classifier.
 	 */
 	public void train() {
-		Logging.info("saving feature map");
+		OldLogging.info("saving feature map");
 		saveMap();
 
-		Logging.info("clear the map to free memory");
+		OldLogging.info("clear the map to free memory");
 		fe.clearMap();
 
-		Logging.info("setting up the problem");
+		OldLogging.info("setting up the problem");
 		setProblem();
 
-		Logging.info("start training");
+		OldLogging.info("start training");
 		model = Linear.train(problem, parameter);
-		Logging.info("finish training");
+		OldLogging.info("finish training");
 
-		Logging.info("saving model");
+		OldLogging.info("saving model");
 		saveModel();
 
-		Logging.info("finish.");
+		OldLogging.info("finish.");
 	}
 
 	/**
@@ -170,18 +170,18 @@ public class SegmentationSystem {
 		double rec = result.getRecall();
 		double f_measure = result.getF1Score();
 
-		Logging.info("\n" + "Number of words recognized by the system:\t\t\t\tN1 = " + N1
+		OldLogging.info("\n" + "Number of words recognized by the system:\t\t\t\tN1 = " + N1
 				+ "\nNumber of words in reality appearing in the corpus:\t\tN2 = " + N2
 				+ "\nNumber of words that are correctly recognized by the system:\tN3 = " + N3 + "\n");
-		Logging.info("Precision\t\tP = N3/N1\t\t=\t" + pre + "%");
-		Logging.info("Recall\t\tR = N3/N2\t\t=\t" + rec + "%");
-		Logging.info("\nF-Measure\t\tF = (2*P*R)/(P+R)\t=\t" + f_measure + "%\n");
+		OldLogging.info("Precision\t\tP = N3/N1\t\t=\t" + pre + "%");
+		OldLogging.info("Recall\t\tR = N3/N2\t\t=\t" + rec + "%");
+		OldLogging.info("\nF-Measure\t\tF = (2*P*R)/(P+R)\t=\t" + f_measure + "%\n");
 
-		Logging.info("\nNumber of sentences:\t" + sentences.size());
-		Logging.info("Sentences right:\t\t" + sentCnt);
-		Logging.info("\nSentences right accuracy:\t" + (double) sentCnt / (double) sentences.size() * 100.0 + "%");
+		OldLogging.info("\nNumber of sentences:\t" + sentences.size());
+		OldLogging.info("Sentences right:\t\t" + sentCnt);
+		OldLogging.info("\nSentences right accuracy:\t" + (double) sentCnt / (double) sentences.size() * 100.0 + "%");
 
-		Logging.info("\nLogged wrong predictions to " + logName);
+		OldLogging.info("\nLogged wrong predictions to " + logName);
 
 		return result;
 	}

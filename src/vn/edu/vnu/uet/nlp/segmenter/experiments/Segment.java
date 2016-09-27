@@ -10,7 +10,7 @@ import java.util.List;
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
 import vn.edu.vnu.uet.nlp.tokenizer.Tokenizer;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * Demo: segmentation for text in file.
@@ -25,7 +25,7 @@ public class Segment {
 
 		List<String> dataLines = FileUtils.readFile(filename);
 
-		Logging.info("loading model...");
+		OldLogging.info("loading model...");
 		SegmentationSystem machine = null;
 		try {
 			machine = new SegmentationSystem("models");
@@ -33,7 +33,7 @@ public class Segment {
 			e.printStackTrace();
 		}
 
-		Logging.info("segmenting...");
+		OldLogging.info("segmenting...");
 		List<String> tokens = new ArrayList<String>();
 		List<String> sentences = new ArrayList<String>();
 
@@ -69,10 +69,10 @@ public class Segment {
 
 		double difference = (end_time - start_time) / 1e9;
 
-		Logging.info("Tokens: " + numTokens);
-		Logging.info("Sentences: " + numSentences);
-		Logging.info("Time: " + difference + " seconds");
-		Logging.info("Rate: " + numTokens / difference + " tokens/sec");
+		OldLogging.info("Tokens: " + numTokens);
+		OldLogging.info("Sentences: " + numSentences);
+		OldLogging.info("Time: " + difference + " seconds");
+		OldLogging.info("Rate: " + numTokens / difference + " tokens/sec");
 	}
 
 }

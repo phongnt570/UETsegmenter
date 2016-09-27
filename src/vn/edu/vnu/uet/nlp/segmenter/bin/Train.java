@@ -15,7 +15,7 @@ import vn.edu.vnu.uet.nlp.segmenter.Configure;
 import vn.edu.vnu.uet.nlp.segmenter.FeatureExtractor;
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * @author tuanphong94
@@ -41,7 +41,7 @@ public class Train {
 
 		FeatureExtractor fe = new FeatureExtractor();
 
-		Logging.info("extracting features...");
+		OldLogging.info("extracting features...");
 		String line = null;
 		int cnt = 0;
 
@@ -79,11 +79,11 @@ public class Train {
 	 */
 	private static void trainFolder(String trainingFolder, String ext, String modelsPath) {
 		FeatureExtractor fe = new FeatureExtractor();
-		Logging.info("extracting features...");
+		OldLogging.info("extracting features...");
 
 		File folder = new File(trainingFolder);
 		if (!folder.isDirectory()) {
-			Logging.error(folder + " is not a valid directory.");
+			OldLogging.error(folder + " is not a valid directory.");
 			return;
 		}
 

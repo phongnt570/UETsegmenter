@@ -11,7 +11,7 @@ import vn.edu.vnu.uet.nlp.segmenter.Configure;
 import vn.edu.vnu.uet.nlp.segmenter.FeatureExtractor;
 import vn.edu.vnu.uet.nlp.segmenter.SegmentationSystem;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * Train the segmetation system with data placed in a directory
@@ -29,7 +29,7 @@ public class FullTrain {
 
 		FeatureExtractor fe = new FeatureExtractor();
 
-		Logging.info("extracting features...");
+		OldLogging.info("extracting features...");
 
 		Files.walk(Paths.get(directory)).forEach(filePath -> {
 			if (Files.isRegularFile(filePath)) {

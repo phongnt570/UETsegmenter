@@ -7,7 +7,7 @@ import java.util.List;
 
 import vn.edu.vnu.uet.nlp.segmenter.UETSegmenter;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
-import vn.edu.vnu.uet.nlp.utils.Logging;
+import vn.edu.vnu.uet.nlp.utils.OldLogging;
 
 /**
  * @author tuanphong94
@@ -61,12 +61,12 @@ public class Segment {
 		File outputFol = new File(outputFolder);
 
 		if (!inputFol.isDirectory()) {
-			Logging.error(inputFolder + " is not a valid directory.");
+			OldLogging.error(inputFolder + " is not a valid directory.");
 			return;
 		}
 
 		if (!outputFol.isDirectory()) {
-			Logging.error(outputFol + " is not a valid directory.");
+			OldLogging.error(outputFol + " is not a valid directory.");
 			return;
 		}
 
