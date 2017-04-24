@@ -110,7 +110,8 @@ If you use the toolkit for academic work, please cite:
 	year={2016}, 
 	pages={114-119},
 	doi={10.1109/RIVF.2016.7800279}, 
-	month={Nov},}
+	month={Nov},
+}
 ```
 
 The approach used in the toolkit is also explained in the paper.
