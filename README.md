@@ -116,10 +116,3 @@ If you use the toolkit for academic work, please cite:
 
 The approach used in the toolkit is also explained in the paper.
 
-## Author
-
-Phong Tuan Nguyen
-
-University of Engineering and Technology, Vietnam National University - Hanoi
-
-Email: phongnt.uet@gmail.com
