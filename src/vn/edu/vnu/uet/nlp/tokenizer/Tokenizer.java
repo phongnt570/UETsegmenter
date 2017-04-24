@@ -6,32 +6,33 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import vn.edu.vnu.uet.nlp.utils.FileUtils;
 import vn.edu.vnu.uet.nlp.utils.StringUtils;
 
 /**
- * Tokenization process (pre-processing).
+ * This class contains methods used for tokenization step.
  * 
  * @author tuanphong94
  *
  */
 public class Tokenizer {
+	/**
+	 * @param s
+	 * @return List of tokens from s
+	 * @throws IOException
+	 */
 	public static List<String> tokenize(String s) throws IOException {
-		List<String> tokens = new ArrayList<>();
-
-		String[] tempTokens = s.split("(\\s| )+");
-		String trimed = s.trim();
-
-		if (trimed.isEmpty() || trimed.equals(StringConst.SPACE) || s == null || tempTokens.length == 0) {
-			return tokens;
+		if (s == null || s.trim().isEmpty()) {
+			return new ArrayList<String>();
 		}
 
+		String[] tempTokens = s.trim().split("\\s+");
+		if (tempTokens.length == 0) {
+			return new ArrayList<String>();
+		}
+
+		List<String> tokens = new ArrayList<String>();
+
 		for (String token : tempTokens) {
-
-			if (token.equals(StringConst.SPACE) || token.isEmpty() || token == null) {
-				continue;
-			}
-
 			if (token.length() == 1 || !StringUtils.hasPunctuation(token)) {
 				tokens.add(token);
 				continue;
@@ -69,7 +70,6 @@ public class Tokenizer {
 				if (i < 0)
 					continue;
 
-				// System.out.println(token + "\t\t" + i);
 				tokenContainsAbb = true;
 				tokens = recursive(tokens, token, i, i + e.length());
 				break;
@@ -83,7 +83,6 @@ public class Tokenizer {
 				if (i < 0)
 					continue;
 
-				// System.out.println(token + "\t\t" + i);
 				tokenContainsExp = true;
 				tokens = recursive(tokens, token, i, i + e.length());
 				break;
@@ -95,27 +94,21 @@ public class Tokenizer {
 
 			boolean matching = false;
 			for (String regex : regexes) {
-				// System.out.println(regex);
 				if (token.matches(regex)) {
-					// System.out.println(token);
-					// System.out.println("Regex: " + regex);
-
 					tokens.add(token);
 					matching = true;
 					break;
 				}
 			}
-			if (matching)
+			if (matching) {
 				continue;
+			}
 
 			for (int i = 0; i < regexes.size(); i++) {
 				Pattern pattern = Pattern.compile(regexes.get(i));
 				Matcher matcher = pattern.matcher(token);
 
 				if (matcher.find()) {
-					// System.out.println(token);
-					// System.out.println("Contain: " + pattern);
-
 					if (i == Regex.getRegexIndex("url")) {
 						String[] elements = token.split(Pattern.quote("."));
 						boolean hasURL = true;
@@ -132,10 +125,8 @@ public class Tokenizer {
 							}
 						}
 						if (hasURL) {
-							// System.out.println("has url");
 							tokens = recursive(tokens, token, matcher.start(), matcher.end());
 						} else {
-							// System.out.println("not have url");
 							continue;
 						}
 					}
@@ -158,11 +149,6 @@ public class Tokenizer {
 						}
 					}
 
-					// else if (i == Regex.getRegexIndex("number")) {
-					// String[] replaceChar = { "-", "+" };
-					// tokens = recursive(tokens, token, matcher.start(),
-					// matcher.end(), replaceChar);
-					// }
 					else {
 						tokens = recursive(tokens, token, matcher.start(), matcher.end());
 					}
@@ -211,14 +197,14 @@ public class Tokenizer {
 			sentence.add(token);
 
 			if (i == tokens.size() - 1) {
-				sentences.add(FileUtils.joinSentence(sentence));
+				sentences.add(joinSentence(sentence));
 				return sentences;
 			}
 
 			if (i < tokens.size() - 2 && token.equals(StringConst.COLON)) {
 				if (Character.isDigit(nextToken.charAt(0)) && tokens.get(i + 2).equals(StringConst.STOP)
 						|| tokens.get(i + 2).equals(StringConst.COMMA)) {
-					sentences.add(FileUtils.joinSentence(sentence));
+					sentences.add(joinSentence(sentence));
 					sentence.clear();
 					continue;
 				}
@@ -247,11 +233,27 @@ public class Tokenizer {
 					}
 				}
 
-				sentences.add(FileUtils.joinSentence(sentence));
+				sentences.add(joinSentence(sentence));
 				sentence.clear();
 			}
 		}
 
 		return sentences;
+	}
+
+	public static String joinSentence(List<String> tokens) {
+		StringBuffer sent = new StringBuffer();
+		int length = tokens.size();
+		String token;
+		for (int i = 0; i < length; i++) {
+			token = tokens.get(i);
+			if (token.isEmpty() || token == null || token.equals(StringConst.SPACE)) {
+				continue;
+			}
+			sent.append(token);
+			if (i < length - 1)
+				sent.append(StringConst.SPACE);
+		}
+		return sent.toString().trim();
 	}
 }

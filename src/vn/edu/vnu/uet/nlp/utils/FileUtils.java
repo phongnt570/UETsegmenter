@@ -14,8 +14,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.edu.vnu.uet.nlp.tokenizer.StringConst;
-
 /**
  * @author tuanphong94
  *
@@ -42,22 +40,6 @@ public class FileUtils {
 		bf = Files.newBufferedWriter(file, UNICODE, StandardOpenOption.TRUNCATE_EXISTING);
 		bf.close();
 		return;
-	}
-
-	public static String joinSentence(List<String> tokens) {
-		StringBuffer sent = new StringBuffer();
-		int length = tokens.size();
-		String token;
-		for (int i = 0; i < length; i++) {
-			token = tokens.get(i);
-			if (token.isEmpty() || token == null || token.equals(StringConst.SPACE)) {
-				continue;
-			}
-			sent.append(token);
-			if (i < length - 1)
-				sent.append(StringConst.SPACE);
-		}
-		return sent.toString().trim();
 	}
 
 	/**

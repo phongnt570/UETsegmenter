@@ -104,13 +104,13 @@ If you use the toolkit for academic work, please cite:
 
 ```
 @INPROCEEDINGS{7800279, 
-author={T. P. Nguyen and A. C. Le}, 
-booktitle={2016 IEEE RIVF International Conference on Computing Communication Technologies, Research, Innovation, and Vision for the Future (RIVF)}, 
-title={A hybrid approach to Vietnamese word segmentation}, 
-year={2016}, 
-pages={114-119},
-doi={10.1109/RIVF.2016.7800279}, 
-month={Nov},}
+	author={T. P. Nguyen and A. C. Le}, 
+	booktitle={2016 IEEE RIVF International Conference on Computing Communication Technologies, Research, Innovation, and Vision for the Future (RIVF)}, 
+	title={A hybrid approach to Vietnamese word segmentation}, 
+	year={2016}, 
+	pages={114-119},
+	doi={10.1109/RIVF.2016.7800279}, 
+	month={Nov},}
 ```
 
 The approach used in the toolkit is also explained in the paper.
