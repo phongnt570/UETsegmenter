@@ -4,6 +4,9 @@ UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid app
 
 UETsegmenter is written in Java and developed in Esclipse IDE.
 
+## Note
+UETsegmenter was inherited in [UETnlp](https://github.com/phongnt570/UETnlp). UETnlp is a toolkit for Vietnamese text processing which can be used for word segmentation and POS tagging. UETnlp is much easier to use than UETsegmenter.
+
 ## Overview
 
 + ```src``` : folder of java source code

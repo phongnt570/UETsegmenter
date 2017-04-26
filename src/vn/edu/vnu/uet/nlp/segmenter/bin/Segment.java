@@ -1,9 +1,9 @@
 package vn.edu.vnu.uet.nlp.segmenter.bin;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import vn.edu.vnu.uet.nlp.segmenter.UETSegmenter;
 import vn.edu.vnu.uet.nlp.utils.FileUtils;
@@ -20,33 +20,36 @@ public class Segment {
 	/**
 	 * @param input
 	 * @param output
+	 * @throws IOException
 	 */
-	private static void segmentFile(String input, String output) {
+	private static void segmentFile(String input, String output) throws IOException {
 		if (segmenter == null) {
 			System.out.println("Load model...");
 			segmenter = new UETSegmenter(modelsPath);
 		}
 
 		System.out.println("Segment file:\t" + input);
-		List<String> dataLines = null;
-		BufferedWriter bw = null;
-		try {
-			dataLines = FileUtils.readFile(input);
-			bw = FileUtils.newUTF8BufferedWriterFromNewFile(output);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
+		BufferedReader br = FileUtils.newUTF8BufferedReaderFromFile(input);
+		BufferedWriter bw = FileUtils.newUTF8BufferedWriterFromNewFile(output);
 
-		for (String line : dataLines) {
-			try {
-				bw.write(segmenter.segment(line));
+		int cnt = 0;
+		for (String line; (line = br.readLine()) != null; cnt++) {
+			line = line.trim();
+			if (line.isEmpty()) {
 				bw.newLine();
+				continue;
+			}
+			String result = segmenter.segment(line);
+			bw.write(result);
+			bw.newLine();
+
+			if (cnt % 1000 == 0) {
 				bw.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
+
+		bw.flush();
+		bw.close();
 
 	}
 
@@ -55,8 +58,10 @@ public class Segment {
 	 * @param inExt
 	 * @param outputFolder
 	 * @param outExt
+	 * @throws IOException
 	 */
-	private static void segmentFolder(String inputFolder, String inExt, String outputFolder, String outExt) {
+	private static void segmentFolder(String inputFolder, String inExt, String outputFolder, String outExt)
+			throws IOException {
 		File inputFol = new File(inputFolder);
 		File outputFol = new File(outputFolder);
 
@@ -86,8 +91,9 @@ public class Segment {
 
 	/**
 	 * @param args
+	 * @throws IOException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int length = args.length;
 
 		if (length != 6 && length != 8 && length != 10) {

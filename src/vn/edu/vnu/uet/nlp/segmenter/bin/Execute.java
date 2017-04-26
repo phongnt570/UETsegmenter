@@ -1,8 +1,10 @@
 package vn.edu.vnu.uet.nlp.segmenter.bin;
 
+import java.io.IOException;
+
 public class Execute {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int length = args.length;
 
 		if (length < 2) {
