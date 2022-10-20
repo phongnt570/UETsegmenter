@@ -110,7 +110,7 @@ If you use the toolkit for academic work, please cite the following paper:
 
 ```bibtex
 @INPROCEEDINGS{UETSegmenter, 
-	author={T. P. Nguyen and A. C. Le}, 
+	author={Nguyen, Tuan-Phong and Le, Anh-Cuong}, 
 	booktitle={2016 IEEE RIVF International Conference on Computing Communication Technologies, Research, Innovation, and Vision for the Future (RIVF)}, 
 	title={A hybrid approach to Vietnamese word segmentation}, 
 	year={2016}, 
