@@ -4,9 +4,6 @@ UETsegmenter is a toolkit for Vietnamese word segmentation. It uses a hybrid app
 
 UETsegmenter is written in Java and developed in Esclipse IDE.
 
-## Note
-UETsegmenter was inherited in [UETnlp](https://github.com/phongnt570/UETnlp). UETnlp is a toolkit for Vietnamese text processing which can be used for word segmentation and POS tagging. UETnlp is much easier to use than UETsegmenter.
-
 ## Overview
 
 + ```src``` : folder of java source code
@@ -69,44 +66,50 @@ After training, the ```models_path``` folder will contain 2 files: ```model``` a
 + Segment a raw text:
 
 ```java
-	String modelsPath = "models"; // path to the model folder. This folder must contain two files: model, features
-	UETSegmenter segmenter = new UETSegmenter(modelsPath); // construct the segmenter
-	String raw_text_1 = "Tốc độ truyền thông tin ngày càng cao.";
-	String raw_text_2 = "Tôi yêu Việt Nam!";
+String modelsPath = "models"; // path to the model folder. This folder must contain two files: model, features
+UETSegmenter segmenter = new UETSegmenter(modelsPath); // construct the segmenter
+String raw_text_1 = "Tốc độ truyền thông tin ngày càng cao.";
+String raw_text_2 = "Tôi yêu Việt Nam!";
 
-	String seg_text_1 = segmenter.segment(raw_text_1); // Tốc_độ truyền thông_tin ngày_càng cao .
-	String seg_text_2 = segmenter.segment(raw_text_2); // Tôi yêu Việt_Nam !
+String seg_text_1 = segmenter.segment(raw_text_1); // Tốc_độ truyền thông_tin ngày_càng cao .
+String seg_text_2 = segmenter.segment(raw_text_2); // Tôi yêu Việt_Nam !
 
-	// ... You only need to construct the segmenter one time, then you can segment any number of texts.
+// ... You only need to construct the segmenter one time, then you can segment any number of texts.
 ```
 
 + Segment a tokenized text:
 
 ```java
-	// ...
-	// ... construct the segmenter
+// ...
+// ... construct the segmenter
 
-	String tokenized = "Tôi , bạn tôi yêu Việt Nam !";
-	String segmented = segmenter.segmentTokenizedText(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
+String tokenized = "Tôi , bạn tôi yêu Việt Nam !";
+String segmented = segmenter.segmentTokenizedText(raw_text_2); // Tôi , bạn tôi yêu Việt_Nam !
 ```
 
 + Segment a raw text and return list of segmented sentences:
 
 ```java
-	// ...
-	// ... construct the segmenter
+// ...
+// ... construct the segmenter
 
-	String text = "Tốc độ truyền thông tin ngày càng cao. Tôi, bạn tôi yêu Việt Nam!";
-	List<String> segmented_sents = segmenter.segmentSentences(text); // [0] : Tốc_độ truyền thông_tin ngày_càng cao .
-																	// [1] : Tôi , bạn tôi yêu Việt_Nam !
+String text = "Tốc độ truyền thông tin ngày càng cao. Tôi, bạn tôi yêu Việt Nam!";
+List<String> segmented_sents = segmenter.segmentSentences(text); 
+// [0] : Tốc_độ truyền thông_tin ngày_càng cao .
+// [1] : Tôi , bạn tôi yêu Việt_Nam !
 ```
+
+
+## Note
+UETsegmenter was inherited in [UETnlp](https://github.com/phongnt570/UETnlp). UETnlp is a toolkit for Vietnamese text processing which can be used for word segmentation and POS tagging.
+
 
 ## Citation
 
-If you use the toolkit for academic work, please cite:
+If you use the toolkit for academic work, please cite the following paper:
 
-```
-@INPROCEEDINGS{7800279, 
+```bibtex
+@INPROCEEDINGS{UETSegmenter, 
 	author={T. P. Nguyen and A. C. Le}, 
 	booktitle={2016 IEEE RIVF International Conference on Computing Communication Technologies, Research, Innovation, and Vision for the Future (RIVF)}, 
 	title={A hybrid approach to Vietnamese word segmentation}, 
@@ -116,6 +119,3 @@ If you use the toolkit for academic work, please cite:
 	month={Nov},
 }
 ```
-
-The approach used in the toolkit is also explained in the paper.
-
